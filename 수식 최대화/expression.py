@@ -22,13 +22,13 @@ for i in operations:
 
         # 컴프리헨션으로 우선순위2 로 분리 후 리스트에 저장 
         arr = [f'({k})' for k in i.split(b)]
-        #
+        # 우선순위 2 연산자와 join 하여 append
         list.append(f'({b.join(arr)})')
     print(arr)    
     
     print(list)
     print('==============================')        
-
+    # eval 로 string 계산 
     answer.append(abs(eval(a.join(list))))
 
 print(max(answer))
