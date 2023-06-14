@@ -1,1 +1,29 @@
 
+from datetime import datetime
+
+def solution(m, musicinfos):
+    result = ''
+    format_str = '%H:%M'
+
+    last_index = len(musicinfos) - 1
+
+    result = ''
+    for index, info in enumerate(musicinfos):
+        print(index)
+        data = info.split(',')
+        time1 = datetime.strptime(data[0], format_str)
+        time2 = datetime.strptime(data[1], format_str)
+
+        time_diff = time2 - time1
+        minutes_diff = time_diff.total_seconds() / 60
+        count = int(minutes_diff)
+
+        music = (data[3] * (count // len(data[3]))) + data[3][:count % len(data[3])]
+
+        if m in music:
+            result = data[2]
+        elif index == last_index and result == "":
+            result = "None"
+        else:
+            pass
+    return result
